@@ -1,7 +1,6 @@
 import { RetryLink } from "@apollo/client/link/retry";
 import {
   ApolloClient,
-  ApolloLink,
   DefaultOptions,
   from,
   HttpLink,
@@ -25,13 +24,15 @@ const customFetch = (uri, options) => {
         try {
           if (options.body) {
             try {
-              let jobj = JSON.parse(options.body);
+              const jobj = JSON.parse(options.body);
               if (jobj.query) {
                 console.error(
                   `REQUEST QUERY: ${trimMax(`${jobj.query}`, 10000)}`
                 );
               }
-            } catch {}
+            } catch (err) {
+              console.error(`err parsing body`, err);
+            }
           }
 
           /* eslint-disable no-console */
