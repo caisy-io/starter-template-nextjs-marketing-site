@@ -1,0 +1,61 @@
+{
+  "name": "demo-project-nextjs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "mgruber <m.gruber@cyclus.digital>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev -p 3005",
+    "gen": "graphql-codegen --config codegen.ts",
+    "gen:watch": "graphql-codegen --watch --config codegen.ts",
+    "build": "next build",
+    "analyze": "ANALYZE=true next build",
+    "start": "next start",
+    "type-check": "tsc --pretty --noEmit",
+    "format": "prettier --write ./src",
+    "lint": "eslint ./src --ext ts --ext tsx --ext js --ext jsx"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.@(ts|tsx)": [
+      "yarn format",
+      "yarn build"
+    ]
+  },
+  "dependencies": {
+    "@apollo/client": "^3.3.20",
+    "@caisy/rich-text-react-renderer": "^0.7.0",
+    "graphql": "^15.5.1",
+    "html-react-parser": "^3.0.12",
+    "next": "^12.3.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-lazyload": "^3.2.0",
+    "styled-components": "^5.3.0",
+    "swiper": "^6.7.5"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^3.2.1",
+    "@graphql-codegen/client-preset": "1.1.4",
+    "@graphql-codegen/introspection": "2.2.1",
+    "@types/node": "^14.14.31",
+    "@types/react": "^17.0.2",
+    "@types/react-lazyload": "^3.1.1",
+    "@types/styled-components": "^5.1.7",
+    "@typescript-eslint/eslint-plugin": "^4.16.1",
+    "@typescript-eslint/parser": "^4.16.1",
+    "babel-plugin-styled-components": "^1.12.0",
+    "eslint": "^7.21.0",
+    "eslint-config-next": "^11.0.1",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-react": "^7.22.0",
+    "lint-staged": "^10.5.4",
+    "plop": "^2.7.4",
+    "prettier": "^2.2.1",
+    "typescript": "^4.2.3"
+  }
+}
