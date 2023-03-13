@@ -25,7 +25,7 @@ export const CompPageHeader: React.FC<IGenCompPageHeader> = ({
 }) => {
   const media = useImageMedia();
 
-  const _image = backgroundImage.find(
+  const _image = backgroundImage?.find(
     (image) => image?.__typename === "Asset"
   ) as IGenAsset;
 
