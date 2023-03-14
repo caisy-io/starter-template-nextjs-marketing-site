@@ -2,10 +2,10 @@ const Robots = () => {
   return null;
 };
 
-export const getServerSideProps = async ({ res }) => {
-  const baseUrl =
-    `${process.env.NEXT_PUBLIC_BASE_URL}` ||
-    "https://demo-project-47.vercel.app";
+export const getServerSideProps = async ({ res, req }) => {
+  const baseUrl = `https://${
+    req.headers["host"] || req.headers["x-forwarded-host"]
+  }`;
 
   const robots = `# *
 User-agent: *

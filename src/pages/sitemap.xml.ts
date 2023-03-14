@@ -1,3 +1,4 @@
+import { GetServerSideProps } from "next";
 import { client } from "../utils/gql/client";
 import { q_slugs } from "../utils/gql/queries/q_slugs";
 import { getStaticPaths } from "./[slug]";
@@ -6,8 +7,11 @@ const Sitemap = () => {
   return null;
 };
 
-export const getServerSideProps = async ({ res }) => {
-  const locales = ["en", "de", "fr", "es", "nl", "ru"];
+export const getServerSideProps: GetServerSideProps = async ({
+  res,
+  req,
+  locales,
+}) => {
   const _qres = client.query({
     query: q_slugs,
     variables: { locale: "en" },
@@ -17,9 +21,10 @@ export const getServerSideProps = async ({ res }) => {
   const { paths } = await getStaticPaths({ locales });
   const allPagesSlugs = (await _qres)?.data?.allPage?.edges;
 
-  const baseUrl =
-    `${process.env.NEXT_PUBLIC_BASE_URL}` ||
-    "https://demo-project-47.vercel.app";
+  const baseUrl = `https://${
+    req.headers["host"] || req.headers["x-forwarded-host"]
+  }`;
+
   const allSlugs = [
     "",
     ...paths.map((slug) => slug?.params?.slug).filter((s) => !!s),
