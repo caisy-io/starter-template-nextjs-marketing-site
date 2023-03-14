@@ -38,9 +38,15 @@ export const CompHeroSliderSlide: React.FC<
         </>
       </SCompHeroSliderSlideImage>
       <SCompHeroSliderSlideTextContainer>
-        <SCompHeroSliderSlideHeadline>{headline}</SCompHeroSliderSlideHeadline>
+        {headline && (
+          <SCompHeroSliderSlideHeadline>
+            {headline}
+          </SCompHeroSliderSlideHeadline>
+        )}
         <SCompHeroSliderSlideText>
-          {text?.json && <RichText content={text.json}></RichText>}
+          {text?.json?.content && (
+            <RichText content={text.json.content}></RichText>
+          )}
         </SCompHeroSliderSlideText>
         {props.children}
       </SCompHeroSliderSlideTextContainer>

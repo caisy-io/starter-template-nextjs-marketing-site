@@ -74,7 +74,7 @@ export const CompHeroSlider: React.FC<IGenCompHeroSlider> = ({ slides }) => {
                   transitionFrom={index === transitionFromSlide}
                   active={index === activeSlide}
                 >
-                  {slide.headline}
+                  {slide.headline && slide.headline}
                 </SCompHeroSliderPageIndicatorTitle>
                 <SCompHeroSliderPageIndicatorLine>
                   <SCompHeroSliderPageIndicatorLineProgress
