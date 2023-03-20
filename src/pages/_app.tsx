@@ -7,6 +7,7 @@ import { IPage } from "../utils/types";
 import { IGenAsset } from "../utils/types_gen";
 import { renderCustomHtmlElements } from "../utils/helpers/renderCustomHtmlElements";
 import { forceCheck } from "react-lazyload";
+import { Toast } from "../components/toast/Toast";
 
 function hexToRgbA(hex, alpha) {
   let c;
@@ -192,6 +193,7 @@ export default function App({ Component, pageProps }) {
             );
           })}
       </Head>
+      {process.env.NEXT_PUBLIC_SHOW_ONBOARDING_TOAST != "false" && <Toast />}
       <GSBase
         primaryColor100={primaryColor100}
         primaryColor80={primaryColor80}
