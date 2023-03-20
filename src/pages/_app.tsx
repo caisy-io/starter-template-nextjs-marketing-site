@@ -193,7 +193,9 @@ export default function App({ Component, pageProps }) {
             );
           })}
       </Head>
-      {process.env.NEXT_PUBLIC_SHOW_ONBOARDING_TOAST != "false" && <Toast />}
+      {`${process.env.NEXT_PUBLIC_SHOW_ONBOARDING_TOAST}` !== "false" && (
+        <Toast />
+      )}
       <GSBase
         primaryColor100={primaryColor100}
         primaryColor80={primaryColor80}
