@@ -16,7 +16,7 @@
 ## Requirements
 
 In order to have the right blueprints configured, make sure to follow the onboarind on [caisy.io](https://caisy.io/) and select the starter template _"Multilingual marketing site"_
-To run this project a `.env` file like this (with your own projects values) is required:
+To run this project a `.env.local` file like this (with your own projects values) is required:
 
 ```
 CAISY_PROJECT_ID=a894c383-edfc-4499-a639-a40509986ed4
@@ -26,7 +26,7 @@ CAISY_API_KEY=xxx
 ### To run this project locally
 
 - [ ] `git clone https://github.com/caisy-io/starter-template-nextjs-marketing-site.git`
-- [ ] create `.env` file with your project id and API key
+- [ ] create `.env.local` file with your project id and API key
 - [ ] `npm install`
 - [ ] `npm run dev`
 
