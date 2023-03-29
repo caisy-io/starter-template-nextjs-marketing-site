@@ -19,7 +19,7 @@ In order to have the right blueprints configured, make sure to follow the onboar
 To run this project a `.env.local` file like this (with your own projects values) is required:
 
 ```
-CAISY_PROJECT_ID=a894c383-edfc-4499-a639-a40509986ed4
+CAISY_PROJECT_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
 CAISY_API_KEY=xxx
 ```
 
