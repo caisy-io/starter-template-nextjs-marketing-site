@@ -119,7 +119,7 @@ const additiveLink = from([
   retryLink,
   errorLink,
   new HttpLink({
-    uri: `https://cloud.caisy.io/api/v3/e/${process.env.CAISY_PROJECT_ID}/graphql`,
+    uri: `https://cloud.caisy.io/api/e/v4/${process.env.CAISY_PROJECT_ID}/graphql`,
     headers: {
       "x-caisy-apikey": process.env.CAISY_API_KEY,
     },
