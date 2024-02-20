@@ -24,15 +24,18 @@ export type IGenAsset = {
   __typename: "Asset";
   _meta?: Maybe<IGenCaisyDocument_Meta>;
   author?: Maybe<Scalars["String"]>;
+  blurHash?: Maybe<Scalars["String"]>;
   copyright?: Maybe<Scalars["String"]>;
   description?: Maybe<Scalars["String"]>;
   dominantColor?: Maybe<Scalars["String"]>;
+  height?: Maybe<Scalars["Int"]>;
   id?: Maybe<Scalars["ID"]>;
   keywords?: Maybe<Scalars["String"]>;
   originType?: Maybe<Scalars["String"]>;
   originalName?: Maybe<Scalars["String"]>;
   src?: Maybe<Scalars["String"]>;
   title?: Maybe<Scalars["String"]>;
+  width?: Maybe<Scalars["Int"]>;
 };
 
 export type IGenAsset_Connection = {
@@ -50,50 +53,82 @@ export type IGenAsset_ConnectionEdge = {
 
 export type IGenAsset_CreateInput = {
   author?: InputMaybe<Scalars["String"]>;
+  blurHash?: InputMaybe<Scalars["String"]>;
   copyright?: InputMaybe<Scalars["String"]>;
   description?: InputMaybe<Scalars["String"]>;
   dominantColor?: InputMaybe<Scalars["String"]>;
+  height?: InputMaybe<Scalars["Int"]>;
   keywords?: InputMaybe<Scalars["String"]>;
   originType?: InputMaybe<Scalars["String"]>;
   originalName?: InputMaybe<Scalars["String"]>;
   src?: InputMaybe<Scalars["String"]>;
   title?: InputMaybe<Scalars["String"]>;
+  width?: InputMaybe<Scalars["Int"]>;
+};
+
+export type IGenAsset_Nested_Where = {
+  AND?: InputMaybe<Array<InputMaybe<IGenAsset_Nested_Where>>>;
+  OR?: InputMaybe<Array<InputMaybe<IGenAsset_Nested_Where>>>;
+  author?: InputMaybe<IGenCaisyField_String_Where>;
+  blurHash?: InputMaybe<IGenCaisyField_String_Where>;
+  copyright?: InputMaybe<IGenCaisyField_String_Where>;
+  description?: InputMaybe<IGenCaisyField_String_Where>;
+  dominantColor?: InputMaybe<IGenCaisyField_Color_Where>;
+  height?: InputMaybe<IGenCaisyField_Number_WhereInt>;
+  keywords?: InputMaybe<IGenCaisyField_String_Where>;
+  originType?: InputMaybe<IGenCaisyField_String_Where>;
+  originalName?: InputMaybe<IGenCaisyField_String_Where>;
+  title?: InputMaybe<IGenCaisyField_String_Where>;
+  width?: InputMaybe<IGenCaisyField_Number_WhereInt>;
 };
 
 export type IGenAsset_Sort = {
   author?: InputMaybe<IGenOrder>;
+  blurHash?: InputMaybe<IGenOrder>;
   copyright?: InputMaybe<IGenOrder>;
+  createdAt?: InputMaybe<IGenOrder>;
   description?: InputMaybe<IGenOrder>;
   dominantColor?: InputMaybe<IGenOrder>;
+  height?: InputMaybe<IGenOrder>;
+  id?: InputMaybe<IGenOrder>;
   keywords?: InputMaybe<IGenOrder>;
   originType?: InputMaybe<IGenOrder>;
   originalName?: InputMaybe<IGenOrder>;
+  publishedAt?: InputMaybe<IGenOrder>;
   title?: InputMaybe<IGenOrder>;
+  updatedAt?: InputMaybe<IGenOrder>;
+  width?: InputMaybe<IGenOrder>;
 };
 
 export type IGenAsset_UpdateInput = {
   author?: InputMaybe<Scalars["String"]>;
+  blurHash?: InputMaybe<Scalars["String"]>;
   copyright?: InputMaybe<Scalars["String"]>;
   description?: InputMaybe<Scalars["String"]>;
   dominantColor?: InputMaybe<Scalars["String"]>;
+  height?: InputMaybe<Scalars["Int"]>;
   keywords?: InputMaybe<Scalars["String"]>;
   originType?: InputMaybe<Scalars["String"]>;
   originalName?: InputMaybe<Scalars["String"]>;
   src?: InputMaybe<Scalars["String"]>;
   title?: InputMaybe<Scalars["String"]>;
+  width?: InputMaybe<Scalars["Int"]>;
 };
 
 export type IGenAsset_Where = {
   AND?: InputMaybe<Array<InputMaybe<IGenAsset_Where>>>;
   OR?: InputMaybe<Array<InputMaybe<IGenAsset_Where>>>;
   author?: InputMaybe<IGenCaisyField_String_Where>;
+  blurHash?: InputMaybe<IGenCaisyField_String_Where>;
   copyright?: InputMaybe<IGenCaisyField_String_Where>;
   description?: InputMaybe<IGenCaisyField_String_Where>;
   dominantColor?: InputMaybe<IGenCaisyField_Color_Where>;
+  height?: InputMaybe<IGenCaisyField_Number_WhereInt>;
   keywords?: InputMaybe<IGenCaisyField_String_Where>;
   originType?: InputMaybe<IGenCaisyField_String_Where>;
   originalName?: InputMaybe<IGenCaisyField_String_Where>;
   title?: InputMaybe<IGenCaisyField_String_Where>;
+  width?: InputMaybe<IGenCaisyField_Number_WhereInt>;
 };
 
 export type IGenCaisyDocument_Meta = {
@@ -112,6 +147,15 @@ export type IGenCaisyField_Color_Where = {
   neq?: InputMaybe<Scalars["String"]>;
 };
 
+export type IGenCaisyField_Number_WhereInt = {
+  eq?: InputMaybe<Scalars["Int"]>;
+  gt?: InputMaybe<Scalars["Int"]>;
+  gte?: InputMaybe<Scalars["Int"]>;
+  lt?: InputMaybe<Scalars["Int"]>;
+  lte?: InputMaybe<Scalars["Int"]>;
+  neq?: InputMaybe<Scalars["Int"]>;
+};
+
 export type IGenCaisyField_Richtext_Where = {
   contains?: InputMaybe<Scalars["String"]>;
   eq?: InputMaybe<Scalars["String"]>;
@@ -128,6 +172,13 @@ export type IGenCaisy_Field_Document_NotFound = {
   __typename: "Caisy_Field_Document_NotFound";
   id?: Maybe<Scalars["ID"]>;
   message?: Maybe<Scalars["String"]>;
+};
+
+export type IGenCaisy_Field_Tag = {
+  __typename: "Caisy_Field_Tag";
+  color?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["String"]>;
+  name?: Maybe<Scalars["String"]>;
 };
 
 export type IGenCompBrandCategory = {
@@ -154,8 +205,18 @@ export type IGenCompBrandCategory_CreateInput = {
   title?: InputMaybe<Scalars["String"]>;
 };
 
+export type IGenCompBrandCategory_Nested_Where = {
+  AND?: InputMaybe<Array<InputMaybe<IGenCompBrandCategory_Nested_Where>>>;
+  OR?: InputMaybe<Array<InputMaybe<IGenCompBrandCategory_Nested_Where>>>;
+  title?: InputMaybe<IGenCaisyField_String_Where>;
+};
+
 export type IGenCompBrandCategory_Sort = {
+  createdAt?: InputMaybe<IGenOrder>;
+  id?: InputMaybe<IGenOrder>;
+  publishedAt?: InputMaybe<IGenOrder>;
   title?: InputMaybe<IGenOrder>;
+  updatedAt?: InputMaybe<IGenOrder>;
 };
 
 export type IGenCompBrandCategory_UpdateInput = {
@@ -178,6 +239,8 @@ export type IGenCompButton = {
 };
 
 export type IGenCompButtonLinkArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
   locale?: InputMaybe<Scalars["String"]>;
 };
 
@@ -211,10 +274,23 @@ export type IGenCompButtonExternalLinks_CreateInput = {
   url?: InputMaybe<Scalars["String"]>;
 };
 
+export type IGenCompButtonExternalLinks_Nested_Where = {
+  AND?: InputMaybe<Array<InputMaybe<IGenCompButtonExternalLinks_Nested_Where>>>;
+  OR?: InputMaybe<Array<InputMaybe<IGenCompButtonExternalLinks_Nested_Where>>>;
+  description?: InputMaybe<IGenCaisyField_String_Where>;
+  style?: InputMaybe<IGenCompButtonExternalLinks_Style_Where>;
+  title?: InputMaybe<IGenCaisyField_String_Where>;
+  url?: InputMaybe<IGenCaisyField_String_Where>;
+};
+
 export type IGenCompButtonExternalLinks_Sort = {
+  createdAt?: InputMaybe<IGenOrder>;
   description?: InputMaybe<IGenOrder>;
+  id?: InputMaybe<IGenOrder>;
+  publishedAt?: InputMaybe<IGenOrder>;
   style?: InputMaybe<IGenOrder>;
   title?: InputMaybe<IGenOrder>;
+  updatedAt?: InputMaybe<IGenOrder>;
   url?: InputMaybe<IGenOrder>;
 };
 
@@ -263,10 +339,29 @@ export type IGenCompButton_CreateInput = {
   title?: InputMaybe<Scalars["String"]>;
 };
 
+export type IGenCompButton_Link_Where = {
+  findOne?: InputMaybe<IGenCompButton_Link_WhereConnection>;
+};
+
+export type IGenCompButton_Link_WhereConnection = {
+  Page?: InputMaybe<IGenPage_Nested_Where>;
+};
+
+export type IGenCompButton_Nested_Where = {
+  AND?: InputMaybe<Array<InputMaybe<IGenCompButton_Nested_Where>>>;
+  OR?: InputMaybe<Array<InputMaybe<IGenCompButton_Nested_Where>>>;
+  style?: InputMaybe<IGenCompButton_Style_Where>;
+  title?: InputMaybe<IGenCaisyField_String_Where>;
+};
+
 export type IGenCompButton_Sort = {
+  createdAt?: InputMaybe<IGenOrder>;
+  id?: InputMaybe<IGenOrder>;
   link?: InputMaybe<IGenOrder>;
+  publishedAt?: InputMaybe<IGenOrder>;
   style?: InputMaybe<IGenOrder>;
   title?: InputMaybe<IGenOrder>;
+  updatedAt?: InputMaybe<IGenOrder>;
 };
 
 export enum IGenCompButton_Style {
@@ -288,6 +383,7 @@ export type IGenCompButton_UpdateInput = {
 export type IGenCompButton_Where = {
   AND?: InputMaybe<Array<InputMaybe<IGenCompButton_Where>>>;
   OR?: InputMaybe<Array<InputMaybe<IGenCompButton_Where>>>;
+  link?: InputMaybe<IGenCompButton_Link_Where>;
   style?: InputMaybe<IGenCompButton_Style_Where>;
   title?: InputMaybe<IGenCaisyField_String_Where>;
 };
@@ -303,6 +399,8 @@ export type IGenCompFacts = {
 };
 
 export type IGenCompFactsFactsArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
   locale?: InputMaybe<Scalars["String"]>;
 };
 
@@ -327,19 +425,20 @@ export type IGenCompFactsFact_ConnectionEdge = {
   node?: Maybe<IGenCompFactsFact>;
 };
 
-export type IGenCompFactsFact_CreateInput = {
-  label?: InputMaybe<Scalars["String"]>;
-  value?: InputMaybe<Scalars["String"]>;
+export type IGenCompFactsFact_Nested_Where = {
+  AND?: InputMaybe<Array<InputMaybe<IGenCompFactsFact_Nested_Where>>>;
+  OR?: InputMaybe<Array<InputMaybe<IGenCompFactsFact_Nested_Where>>>;
+  label?: InputMaybe<IGenCaisyField_String_Where>;
+  value?: InputMaybe<IGenCaisyField_String_Where>;
 };
 
 export type IGenCompFactsFact_Sort = {
+  createdAt?: InputMaybe<IGenOrder>;
+  id?: InputMaybe<IGenOrder>;
   label?: InputMaybe<IGenOrder>;
+  publishedAt?: InputMaybe<IGenOrder>;
+  updatedAt?: InputMaybe<IGenOrder>;
   value?: InputMaybe<IGenOrder>;
-};
-
-export type IGenCompFactsFact_UpdateInput = {
-  label?: InputMaybe<Scalars["String"]>;
-  value?: InputMaybe<Scalars["String"]>;
 };
 
 export type IGenCompFactsFact_Where = {
@@ -362,24 +461,33 @@ export type IGenCompFacts_ConnectionEdge = {
   node?: Maybe<IGenCompFacts>;
 };
 
-export type IGenCompFacts_CreateInput = {
-  facts?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  title?: InputMaybe<Scalars["String"]>;
+export type IGenCompFacts_Facts_Where = {
+  findOne?: InputMaybe<IGenCompFacts_Facts_WhereConnection>;
+};
+
+export type IGenCompFacts_Facts_WhereConnection = {
+  CompFactsFact?: InputMaybe<IGenCompFactsFact_Nested_Where>;
+};
+
+export type IGenCompFacts_Nested_Where = {
+  AND?: InputMaybe<Array<InputMaybe<IGenCompFacts_Nested_Where>>>;
+  OR?: InputMaybe<Array<InputMaybe<IGenCompFacts_Nested_Where>>>;
+  title?: InputMaybe<IGenCaisyField_String_Where>;
 };
 
 export type IGenCompFacts_Sort = {
+  createdAt?: InputMaybe<IGenOrder>;
   facts?: InputMaybe<IGenOrder>;
+  id?: InputMaybe<IGenOrder>;
+  publishedAt?: InputMaybe<IGenOrder>;
   title?: InputMaybe<IGenOrder>;
-};
-
-export type IGenCompFacts_UpdateInput = {
-  facts?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  title?: InputMaybe<Scalars["String"]>;
+  updatedAt?: InputMaybe<IGenOrder>;
 };
 
 export type IGenCompFacts_Where = {
   AND?: InputMaybe<Array<InputMaybe<IGenCompFacts_Where>>>;
   OR?: InputMaybe<Array<InputMaybe<IGenCompFacts_Where>>>;
+  facts?: InputMaybe<IGenCompFacts_Facts_Where>;
   title?: InputMaybe<IGenCaisyField_String_Where>;
 };
 
@@ -394,6 +502,8 @@ export type IGenCompFaq = {
 };
 
 export type IGenCompFaqFaqItemsArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
   locale?: InputMaybe<Scalars["String"]>;
 };
 
@@ -427,8 +537,19 @@ export type IGenCompFaqItem_CreateInput = {
   title?: InputMaybe<Scalars["String"]>;
 };
 
+export type IGenCompFaqItem_Nested_Where = {
+  AND?: InputMaybe<Array<InputMaybe<IGenCompFaqItem_Nested_Where>>>;
+  OR?: InputMaybe<Array<InputMaybe<IGenCompFaqItem_Nested_Where>>>;
+  description?: InputMaybe<IGenCaisyField_Richtext_Where>;
+  title?: InputMaybe<IGenCaisyField_String_Where>;
+};
+
 export type IGenCompFaqItem_Sort = {
+  createdAt?: InputMaybe<IGenOrder>;
+  id?: InputMaybe<IGenOrder>;
+  publishedAt?: InputMaybe<IGenOrder>;
   title?: InputMaybe<IGenOrder>;
+  updatedAt?: InputMaybe<IGenOrder>;
 };
 
 export type IGenCompFaqItem_UpdateInput = {
@@ -449,6 +570,12 @@ export type IGenCompFaqItem_Description = {
   json?: Maybe<Scalars["JSON"]>;
 };
 
+export type IGenCompFaqItem_DescriptionConnectionsArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
+  locale?: InputMaybe<Scalars["String"]>;
+};
+
 export type IGenCompFaqItem_Description_Connections =
   IGenCaisy_Field_Document_NotFound;
 
@@ -465,24 +592,33 @@ export type IGenCompFaq_ConnectionEdge = {
   node?: Maybe<IGenCompFaq>;
 };
 
-export type IGenCompFaq_CreateInput = {
-  faqItems?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  title?: InputMaybe<Scalars["String"]>;
+export type IGenCompFaq_FaqItems_Where = {
+  findOne?: InputMaybe<IGenCompFaq_FaqItems_WhereConnection>;
+};
+
+export type IGenCompFaq_FaqItems_WhereConnection = {
+  CompFaqItem?: InputMaybe<IGenCompFaqItem_Nested_Where>;
+};
+
+export type IGenCompFaq_Nested_Where = {
+  AND?: InputMaybe<Array<InputMaybe<IGenCompFaq_Nested_Where>>>;
+  OR?: InputMaybe<Array<InputMaybe<IGenCompFaq_Nested_Where>>>;
+  title?: InputMaybe<IGenCaisyField_String_Where>;
 };
 
 export type IGenCompFaq_Sort = {
+  createdAt?: InputMaybe<IGenOrder>;
   faqItems?: InputMaybe<IGenOrder>;
+  id?: InputMaybe<IGenOrder>;
+  publishedAt?: InputMaybe<IGenOrder>;
   title?: InputMaybe<IGenOrder>;
-};
-
-export type IGenCompFaq_UpdateInput = {
-  faqItems?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  title?: InputMaybe<Scalars["String"]>;
+  updatedAt?: InputMaybe<IGenOrder>;
 };
 
 export type IGenCompFaq_Where = {
   AND?: InputMaybe<Array<InputMaybe<IGenCompFaq_Where>>>;
   OR?: InputMaybe<Array<InputMaybe<IGenCompFaq_Where>>>;
+  faqItems?: InputMaybe<IGenCompFaq_FaqItems_Where>;
   title?: InputMaybe<IGenCaisyField_String_Where>;
 };
 
@@ -497,6 +633,8 @@ export type IGenCompFooterSection = {
 };
 
 export type IGenCompFooterSectionLinksArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
   locale?: InputMaybe<Scalars["String"]>;
 };
 
@@ -518,9 +656,22 @@ export type IGenCompFooterSection_CreateInput = {
   sectionTitle?: InputMaybe<Scalars["String"]>;
 };
 
+export type IGenCompFooterSection_Links_Where = {
+  findOne?: InputMaybe<IGenCompFooterSection_Links_WhereConnection>;
+};
+
+export type IGenCompFooterSection_Links_WhereConnection = {
+  CompButton?: InputMaybe<IGenCompButton_Nested_Where>;
+  CompButtonExternalLinks?: InputMaybe<IGenCompButtonExternalLinks_Nested_Where>;
+};
+
 export type IGenCompFooterSection_Sort = {
+  createdAt?: InputMaybe<IGenOrder>;
+  id?: InputMaybe<IGenOrder>;
   links?: InputMaybe<IGenOrder>;
+  publishedAt?: InputMaybe<IGenOrder>;
   sectionTitle?: InputMaybe<IGenOrder>;
+  updatedAt?: InputMaybe<IGenOrder>;
 };
 
 export type IGenCompFooterSection_UpdateInput = {
@@ -531,6 +682,7 @@ export type IGenCompFooterSection_UpdateInput = {
 export type IGenCompFooterSection_Where = {
   AND?: InputMaybe<Array<InputMaybe<IGenCompFooterSection_Where>>>;
   OR?: InputMaybe<Array<InputMaybe<IGenCompFooterSection_Where>>>;
+  links?: InputMaybe<IGenCompFooterSection_Links_Where>;
   sectionTitle?: InputMaybe<IGenCaisyField_String_Where>;
 };
 
@@ -549,6 +701,8 @@ export type IGenCompGrid = {
 };
 
 export type IGenCompGridItemsArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
   locale?: InputMaybe<Scalars["String"]>;
 };
 
@@ -565,11 +719,23 @@ export type IGenCompGridBrandCard = {
 };
 
 export type IGenCompGridBrandCardCategoryArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
   locale?: InputMaybe<Scalars["String"]>;
 };
 
 export type IGenCompGridBrandCardLogoArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
   locale?: InputMaybe<Scalars["String"]>;
+};
+
+export type IGenCompGridBrandCard_Category_Where = {
+  findOne?: InputMaybe<IGenCompGridBrandCard_Category_WhereConnection>;
+};
+
+export type IGenCompGridBrandCard_Category_WhereConnection = {
+  CompBrandCategory?: InputMaybe<IGenCompBrandCategory_Nested_Where>;
 };
 
 export type IGenCompGridBrandCard_Connection = {
@@ -585,22 +751,34 @@ export type IGenCompGridBrandCard_ConnectionEdge = {
   node?: Maybe<IGenCompGridBrandCard>;
 };
 
-export type IGenCompGridBrandCard_CreateInput = {
-  category?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  description?: InputMaybe<Scalars["String"]>;
-  linksTo?: InputMaybe<Scalars["String"]>;
-  logo?: InputMaybe<Scalars["ID"]>;
-  name?: InputMaybe<Scalars["String"]>;
-  style?: InputMaybe<IGenCompGridBrandCard_Style>;
+export type IGenCompGridBrandCard_Logo_Where = {
+  findOne?: InputMaybe<IGenCompGridBrandCard_Logo_WhereConnection>;
+};
+
+export type IGenCompGridBrandCard_Logo_WhereConnection = {
+  Asset?: InputMaybe<IGenAsset_Nested_Where>;
+};
+
+export type IGenCompGridBrandCard_Nested_Where = {
+  AND?: InputMaybe<Array<InputMaybe<IGenCompGridBrandCard_Nested_Where>>>;
+  OR?: InputMaybe<Array<InputMaybe<IGenCompGridBrandCard_Nested_Where>>>;
+  description?: InputMaybe<IGenCaisyField_String_Where>;
+  linksTo?: InputMaybe<IGenCaisyField_String_Where>;
+  name?: InputMaybe<IGenCaisyField_String_Where>;
+  style?: InputMaybe<IGenCompGridBrandCard_Style_Where>;
 };
 
 export type IGenCompGridBrandCard_Sort = {
   category?: InputMaybe<IGenOrder>;
+  createdAt?: InputMaybe<IGenOrder>;
   description?: InputMaybe<IGenOrder>;
+  id?: InputMaybe<IGenOrder>;
   linksTo?: InputMaybe<IGenOrder>;
   logo?: InputMaybe<IGenOrder>;
   name?: InputMaybe<IGenOrder>;
+  publishedAt?: InputMaybe<IGenOrder>;
   style?: InputMaybe<IGenOrder>;
+  updatedAt?: InputMaybe<IGenOrder>;
 };
 
 export enum IGenCompGridBrandCard_Style {
@@ -612,20 +790,13 @@ export type IGenCompGridBrandCard_Style_Where = {
   eq?: InputMaybe<IGenCompGridBrandCard_Style>;
 };
 
-export type IGenCompGridBrandCard_UpdateInput = {
-  category?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  description?: InputMaybe<Scalars["String"]>;
-  linksTo?: InputMaybe<Scalars["String"]>;
-  logo?: InputMaybe<Scalars["ID"]>;
-  name?: InputMaybe<Scalars["String"]>;
-  style?: InputMaybe<IGenCompGridBrandCard_Style>;
-};
-
 export type IGenCompGridBrandCard_Where = {
   AND?: InputMaybe<Array<InputMaybe<IGenCompGridBrandCard_Where>>>;
   OR?: InputMaybe<Array<InputMaybe<IGenCompGridBrandCard_Where>>>;
+  category?: InputMaybe<IGenCompGridBrandCard_Category_Where>;
   description?: InputMaybe<IGenCaisyField_String_Where>;
   linksTo?: InputMaybe<IGenCaisyField_String_Where>;
+  logo?: InputMaybe<IGenCompGridBrandCard_Logo_Where>;
   name?: InputMaybe<IGenCaisyField_String_Where>;
   style?: InputMaybe<IGenCompGridBrandCard_Style_Where>;
 };
@@ -643,6 +814,8 @@ export type IGenCompGridTeamMemberCard = {
 };
 
 export type IGenCompGridTeamMemberCardImageArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
   locale?: InputMaybe<Scalars["String"]>;
 };
 
@@ -659,30 +832,37 @@ export type IGenCompGridTeamMemberCard_ConnectionEdge = {
   node?: Maybe<IGenCompGridTeamMemberCard>;
 };
 
-export type IGenCompGridTeamMemberCard_CreateInput = {
-  image?: InputMaybe<Scalars["ID"]>;
-  jobTitle?: InputMaybe<Scalars["String"]>;
-  linkToLinkedInProfile?: InputMaybe<Scalars["String"]>;
-  name?: InputMaybe<Scalars["String"]>;
+export type IGenCompGridTeamMemberCard_Image_Where = {
+  findOne?: InputMaybe<IGenCompGridTeamMemberCard_Image_WhereConnection>;
+};
+
+export type IGenCompGridTeamMemberCard_Image_WhereConnection = {
+  Asset?: InputMaybe<IGenAsset_Nested_Where>;
+};
+
+export type IGenCompGridTeamMemberCard_Nested_Where = {
+  AND?: InputMaybe<Array<InputMaybe<IGenCompGridTeamMemberCard_Nested_Where>>>;
+  OR?: InputMaybe<Array<InputMaybe<IGenCompGridTeamMemberCard_Nested_Where>>>;
+  jobTitle?: InputMaybe<IGenCaisyField_String_Where>;
+  linkToLinkedInProfile?: InputMaybe<IGenCaisyField_String_Where>;
+  name?: InputMaybe<IGenCaisyField_String_Where>;
 };
 
 export type IGenCompGridTeamMemberCard_Sort = {
+  createdAt?: InputMaybe<IGenOrder>;
+  id?: InputMaybe<IGenOrder>;
   image?: InputMaybe<IGenOrder>;
   jobTitle?: InputMaybe<IGenOrder>;
   linkToLinkedInProfile?: InputMaybe<IGenOrder>;
   name?: InputMaybe<IGenOrder>;
-};
-
-export type IGenCompGridTeamMemberCard_UpdateInput = {
-  image?: InputMaybe<Scalars["ID"]>;
-  jobTitle?: InputMaybe<Scalars["String"]>;
-  linkToLinkedInProfile?: InputMaybe<Scalars["String"]>;
-  name?: InputMaybe<Scalars["String"]>;
+  publishedAt?: InputMaybe<IGenOrder>;
+  updatedAt?: InputMaybe<IGenOrder>;
 };
 
 export type IGenCompGridTeamMemberCard_Where = {
   AND?: InputMaybe<Array<InputMaybe<IGenCompGridTeamMemberCard_Where>>>;
   OR?: InputMaybe<Array<InputMaybe<IGenCompGridTeamMemberCard_Where>>>;
+  image?: InputMaybe<IGenCompGridTeamMemberCard_Image_Where>;
   jobTitle?: InputMaybe<IGenCaisyField_String_Where>;
   linkToLinkedInProfile?: InputMaybe<IGenCaisyField_String_Where>;
   name?: InputMaybe<IGenCaisyField_String_Where>;
@@ -701,11 +881,21 @@ export type IGenCompGrid_ConnectionEdge = {
   node?: Maybe<IGenCompGrid>;
 };
 
-export type IGenCompGrid_CreateInput = {
-  headline?: InputMaybe<Scalars["String"]>;
-  items?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  numberOfColumns?: InputMaybe<IGenCompGrid_NumberOfColumns>;
-  title?: InputMaybe<Scalars["String"]>;
+export type IGenCompGrid_Items_Where = {
+  findOne?: InputMaybe<IGenCompGrid_Items_WhereConnection>;
+};
+
+export type IGenCompGrid_Items_WhereConnection = {
+  CompGridBrandCard?: InputMaybe<IGenCompGridBrandCard_Nested_Where>;
+  CompGridTeamMemberCard?: InputMaybe<IGenCompGridTeamMemberCard_Nested_Where>;
+};
+
+export type IGenCompGrid_Nested_Where = {
+  AND?: InputMaybe<Array<InputMaybe<IGenCompGrid_Nested_Where>>>;
+  OR?: InputMaybe<Array<InputMaybe<IGenCompGrid_Nested_Where>>>;
+  headline?: InputMaybe<IGenCaisyField_String_Where>;
+  numberOfColumns?: InputMaybe<IGenCompGrid_NumberOfColumns_Where>;
+  title?: InputMaybe<IGenCaisyField_String_Where>;
 };
 
 export enum IGenCompGrid_NumberOfColumns {
@@ -719,23 +909,21 @@ export type IGenCompGrid_NumberOfColumns_Where = {
 };
 
 export type IGenCompGrid_Sort = {
+  createdAt?: InputMaybe<IGenOrder>;
   headline?: InputMaybe<IGenOrder>;
+  id?: InputMaybe<IGenOrder>;
   items?: InputMaybe<IGenOrder>;
   numberOfColumns?: InputMaybe<IGenOrder>;
+  publishedAt?: InputMaybe<IGenOrder>;
   title?: InputMaybe<IGenOrder>;
-};
-
-export type IGenCompGrid_UpdateInput = {
-  headline?: InputMaybe<Scalars["String"]>;
-  items?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  numberOfColumns?: InputMaybe<IGenCompGrid_NumberOfColumns>;
-  title?: InputMaybe<Scalars["String"]>;
+  updatedAt?: InputMaybe<IGenOrder>;
 };
 
 export type IGenCompGrid_Where = {
   AND?: InputMaybe<Array<InputMaybe<IGenCompGrid_Where>>>;
   OR?: InputMaybe<Array<InputMaybe<IGenCompGrid_Where>>>;
   headline?: InputMaybe<IGenCaisyField_String_Where>;
+  items?: InputMaybe<IGenCompGrid_Items_Where>;
   numberOfColumns?: InputMaybe<IGenCompGrid_NumberOfColumns_Where>;
   title?: InputMaybe<IGenCaisyField_String_Where>;
 };
@@ -753,6 +941,8 @@ export type IGenCompHeroSlider = {
 };
 
 export type IGenCompHeroSliderSlidesArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
   locale?: InputMaybe<Scalars["String"]>;
 };
 
@@ -768,11 +958,21 @@ export type IGenCompHeroSliderSlide = {
 };
 
 export type IGenCompHeroSliderSlideBackgroundImageArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
   locale?: InputMaybe<Scalars["String"]>;
 };
 
 export type IGenCompHeroSliderSlideTextArgs = {
   locale?: InputMaybe<Scalars["String"]>;
+};
+
+export type IGenCompHeroSliderSlide_BackgroundImage_Where = {
+  findOne?: InputMaybe<IGenCompHeroSliderSlide_BackgroundImage_WhereConnection>;
+};
+
+export type IGenCompHeroSliderSlide_BackgroundImage_WhereConnection = {
+  Asset?: InputMaybe<IGenAsset_Nested_Where>;
 };
 
 export type IGenCompHeroSliderSlide_Connection = {
@@ -788,26 +988,26 @@ export type IGenCompHeroSliderSlide_ConnectionEdge = {
   node?: Maybe<IGenCompHeroSliderSlide>;
 };
 
-export type IGenCompHeroSliderSlide_CreateInput = {
-  backgroundImage?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  headline?: InputMaybe<Scalars["String"]>;
-  text?: InputMaybe<Scalars["JSON"]>;
+export type IGenCompHeroSliderSlide_Nested_Where = {
+  AND?: InputMaybe<Array<InputMaybe<IGenCompHeroSliderSlide_Nested_Where>>>;
+  OR?: InputMaybe<Array<InputMaybe<IGenCompHeroSliderSlide_Nested_Where>>>;
+  headline?: InputMaybe<IGenCaisyField_String_Where>;
+  text?: InputMaybe<IGenCaisyField_Richtext_Where>;
 };
 
 export type IGenCompHeroSliderSlide_Sort = {
   backgroundImage?: InputMaybe<IGenOrder>;
+  createdAt?: InputMaybe<IGenOrder>;
   headline?: InputMaybe<IGenOrder>;
-};
-
-export type IGenCompHeroSliderSlide_UpdateInput = {
-  backgroundImage?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  headline?: InputMaybe<Scalars["String"]>;
-  text?: InputMaybe<Scalars["JSON"]>;
+  id?: InputMaybe<IGenOrder>;
+  publishedAt?: InputMaybe<IGenOrder>;
+  updatedAt?: InputMaybe<IGenOrder>;
 };
 
 export type IGenCompHeroSliderSlide_Where = {
   AND?: InputMaybe<Array<InputMaybe<IGenCompHeroSliderSlide_Where>>>;
   OR?: InputMaybe<Array<InputMaybe<IGenCompHeroSliderSlide_Where>>>;
+  backgroundImage?: InputMaybe<IGenCompHeroSliderSlide_BackgroundImage_Where>;
   headline?: InputMaybe<IGenCaisyField_String_Where>;
   text?: InputMaybe<IGenCaisyField_Richtext_Where>;
 };
@@ -818,6 +1018,12 @@ export type IGenCompHeroSliderSlide_Text = {
   __typename: "CompHeroSliderSlide_text";
   connections?: Maybe<Array<Maybe<IGenCompHeroSliderSlide_Text_Connections>>>;
   json?: Maybe<Scalars["JSON"]>;
+};
+
+export type IGenCompHeroSliderSlide_TextConnectionsArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
+  locale?: InputMaybe<Scalars["String"]>;
 };
 
 export type IGenCompHeroSliderSlide_Text_Connections =
@@ -836,24 +1042,33 @@ export type IGenCompHeroSlider_ConnectionEdge = {
   node?: Maybe<IGenCompHeroSlider>;
 };
 
-export type IGenCompHeroSlider_CreateInput = {
-  slides?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  title?: InputMaybe<Scalars["String"]>;
+export type IGenCompHeroSlider_Nested_Where = {
+  AND?: InputMaybe<Array<InputMaybe<IGenCompHeroSlider_Nested_Where>>>;
+  OR?: InputMaybe<Array<InputMaybe<IGenCompHeroSlider_Nested_Where>>>;
+  title?: InputMaybe<IGenCaisyField_String_Where>;
+};
+
+export type IGenCompHeroSlider_Slides_Where = {
+  findOne?: InputMaybe<IGenCompHeroSlider_Slides_WhereConnection>;
+};
+
+export type IGenCompHeroSlider_Slides_WhereConnection = {
+  CompHeroSliderSlide?: InputMaybe<IGenCompHeroSliderSlide_Nested_Where>;
 };
 
 export type IGenCompHeroSlider_Sort = {
+  createdAt?: InputMaybe<IGenOrder>;
+  id?: InputMaybe<IGenOrder>;
+  publishedAt?: InputMaybe<IGenOrder>;
   slides?: InputMaybe<IGenOrder>;
   title?: InputMaybe<IGenOrder>;
-};
-
-export type IGenCompHeroSlider_UpdateInput = {
-  slides?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  title?: InputMaybe<Scalars["String"]>;
+  updatedAt?: InputMaybe<IGenOrder>;
 };
 
 export type IGenCompHeroSlider_Where = {
   AND?: InputMaybe<Array<InputMaybe<IGenCompHeroSlider_Where>>>;
   OR?: InputMaybe<Array<InputMaybe<IGenCompHeroSlider_Where>>>;
+  slides?: InputMaybe<IGenCompHeroSlider_Slides_Where>;
   title?: InputMaybe<IGenCaisyField_String_Where>;
 };
 
@@ -869,6 +1084,8 @@ export type IGenCompImageCard = {
 };
 
 export type IGenCompImageCardImageArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
   locale?: InputMaybe<Scalars["String"]>;
 };
 
@@ -891,10 +1108,22 @@ export type IGenCompImageCard_CreateInput = {
   title?: InputMaybe<Scalars["String"]>;
 };
 
+export type IGenCompImageCard_Image_Where = {
+  findOne?: InputMaybe<IGenCompImageCard_Image_WhereConnection>;
+};
+
+export type IGenCompImageCard_Image_WhereConnection = {
+  Asset?: InputMaybe<IGenAsset_Nested_Where>;
+};
+
 export type IGenCompImageCard_Sort = {
+  createdAt?: InputMaybe<IGenOrder>;
   description?: InputMaybe<IGenOrder>;
+  id?: InputMaybe<IGenOrder>;
   image?: InputMaybe<IGenOrder>;
+  publishedAt?: InputMaybe<IGenOrder>;
   title?: InputMaybe<IGenOrder>;
+  updatedAt?: InputMaybe<IGenOrder>;
 };
 
 export type IGenCompImageCard_UpdateInput = {
@@ -907,6 +1136,7 @@ export type IGenCompImageCard_Where = {
   AND?: InputMaybe<Array<InputMaybe<IGenCompImageCard_Where>>>;
   OR?: InputMaybe<Array<InputMaybe<IGenCompImageCard_Where>>>;
   description?: InputMaybe<IGenCaisyField_String_Where>;
+  image?: InputMaybe<IGenCompImageCard_Image_Where>;
   title?: InputMaybe<IGenCaisyField_String_Where>;
 };
 
@@ -923,15 +1153,36 @@ export type IGenCompImageWithText = {
 };
 
 export type IGenCompImageWithTextAssetArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
   locale?: InputMaybe<Scalars["String"]>;
 };
 
 export type IGenCompImageWithTextButtonsArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
   locale?: InputMaybe<Scalars["String"]>;
 };
 
 export type IGenCompImageWithTextTextArgs = {
   locale?: InputMaybe<Scalars["String"]>;
+};
+
+export type IGenCompImageWithText_Asset_Where = {
+  findOne?: InputMaybe<IGenCompImageWithText_Asset_WhereConnection>;
+};
+
+export type IGenCompImageWithText_Asset_WhereConnection = {
+  Asset?: InputMaybe<IGenAsset_Nested_Where>;
+};
+
+export type IGenCompImageWithText_Buttons_Where = {
+  findOne?: InputMaybe<IGenCompImageWithText_Buttons_WhereConnection>;
+};
+
+export type IGenCompImageWithText_Buttons_WhereConnection = {
+  CompButton?: InputMaybe<IGenCompButton_Nested_Where>;
+  CompButtonExternalLinks?: InputMaybe<IGenCompButtonExternalLinks_Nested_Where>;
 };
 
 export type IGenCompImageWithText_Connection = {
@@ -947,35 +1198,32 @@ export type IGenCompImageWithText_ConnectionEdge = {
   node?: Maybe<IGenCompImageWithText>;
 };
 
-export type IGenCompImageWithText_CreateInput = {
-  asset?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  buttons?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  headline?: InputMaybe<Scalars["String"]>;
+export type IGenCompImageWithText_Nested_Where = {
+  AND?: InputMaybe<Array<InputMaybe<IGenCompImageWithText_Nested_Where>>>;
+  OR?: InputMaybe<Array<InputMaybe<IGenCompImageWithText_Nested_Where>>>;
+  headline?: InputMaybe<IGenCaisyField_String_Where>;
   imageRightInsteadOfLeft?: InputMaybe<Scalars["Boolean"]>;
-  strap?: InputMaybe<Scalars["String"]>;
-  text?: InputMaybe<Scalars["JSON"]>;
+  strap?: InputMaybe<IGenCaisyField_String_Where>;
+  text?: InputMaybe<IGenCaisyField_Richtext_Where>;
 };
 
 export type IGenCompImageWithText_Sort = {
   asset?: InputMaybe<IGenOrder>;
   buttons?: InputMaybe<IGenOrder>;
+  createdAt?: InputMaybe<IGenOrder>;
   headline?: InputMaybe<IGenOrder>;
+  id?: InputMaybe<IGenOrder>;
   imageRightInsteadOfLeft?: InputMaybe<IGenOrder>;
+  publishedAt?: InputMaybe<IGenOrder>;
   strap?: InputMaybe<IGenOrder>;
-};
-
-export type IGenCompImageWithText_UpdateInput = {
-  asset?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  buttons?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  headline?: InputMaybe<Scalars["String"]>;
-  imageRightInsteadOfLeft?: InputMaybe<Scalars["Boolean"]>;
-  strap?: InputMaybe<Scalars["String"]>;
-  text?: InputMaybe<Scalars["JSON"]>;
+  updatedAt?: InputMaybe<IGenOrder>;
 };
 
 export type IGenCompImageWithText_Where = {
   AND?: InputMaybe<Array<InputMaybe<IGenCompImageWithText_Where>>>;
   OR?: InputMaybe<Array<InputMaybe<IGenCompImageWithText_Where>>>;
+  asset?: InputMaybe<IGenCompImageWithText_Asset_Where>;
+  buttons?: InputMaybe<IGenCompImageWithText_Buttons_Where>;
   headline?: InputMaybe<IGenCaisyField_String_Where>;
   imageRightInsteadOfLeft?: InputMaybe<Scalars["Boolean"]>;
   strap?: InputMaybe<IGenCaisyField_String_Where>;
@@ -994,6 +1242,12 @@ export type IGenCompImageWithText_Text = {
   json?: Maybe<Scalars["JSON"]>;
 };
 
+export type IGenCompImageWithText_TextConnectionsArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
+  locale?: InputMaybe<Scalars["String"]>;
+};
+
 export type IGenCompImageWithText_Text_Connections =
   IGenCaisy_Field_Document_NotFound;
 
@@ -1007,11 +1261,31 @@ export type IGenCompPageHeader = {
 };
 
 export type IGenCompPageHeaderBackgroundImageArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
   locale?: InputMaybe<Scalars["String"]>;
 };
 
 export type IGenCompPageHeaderBackgroundVideoArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
   locale?: InputMaybe<Scalars["String"]>;
+};
+
+export type IGenCompPageHeader_BackgroundImage_Where = {
+  findOne?: InputMaybe<IGenCompPageHeader_BackgroundImage_WhereConnection>;
+};
+
+export type IGenCompPageHeader_BackgroundImage_WhereConnection = {
+  Asset?: InputMaybe<IGenAsset_Nested_Where>;
+};
+
+export type IGenCompPageHeader_BackgroundVideo_Where = {
+  findOne?: InputMaybe<IGenCompPageHeader_BackgroundVideo_WhereConnection>;
+};
+
+export type IGenCompPageHeader_BackgroundVideo_WhereConnection = {
+  Video?: InputMaybe<IGenVideo_Nested_Where>;
 };
 
 export type IGenCompPageHeader_Connection = {
@@ -1027,27 +1301,27 @@ export type IGenCompPageHeader_ConnectionEdge = {
   node?: Maybe<IGenCompPageHeader>;
 };
 
-export type IGenCompPageHeader_CreateInput = {
-  backgroundImage?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  backgroundVideo?: InputMaybe<Scalars["ID"]>;
-  headline?: InputMaybe<Scalars["String"]>;
+export type IGenCompPageHeader_Nested_Where = {
+  AND?: InputMaybe<Array<InputMaybe<IGenCompPageHeader_Nested_Where>>>;
+  OR?: InputMaybe<Array<InputMaybe<IGenCompPageHeader_Nested_Where>>>;
+  headline?: InputMaybe<IGenCaisyField_String_Where>;
 };
 
 export type IGenCompPageHeader_Sort = {
   backgroundImage?: InputMaybe<IGenOrder>;
   backgroundVideo?: InputMaybe<IGenOrder>;
+  createdAt?: InputMaybe<IGenOrder>;
   headline?: InputMaybe<IGenOrder>;
-};
-
-export type IGenCompPageHeader_UpdateInput = {
-  backgroundImage?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  backgroundVideo?: InputMaybe<Scalars["ID"]>;
-  headline?: InputMaybe<Scalars["String"]>;
+  id?: InputMaybe<IGenOrder>;
+  publishedAt?: InputMaybe<IGenOrder>;
+  updatedAt?: InputMaybe<IGenOrder>;
 };
 
 export type IGenCompPageHeader_Where = {
   AND?: InputMaybe<Array<InputMaybe<IGenCompPageHeader_Where>>>;
   OR?: InputMaybe<Array<InputMaybe<IGenCompPageHeader_Where>>>;
+  backgroundImage?: InputMaybe<IGenCompPageHeader_BackgroundImage_Where>;
+  backgroundVideo?: InputMaybe<IGenCompPageHeader_BackgroundVideo_Where>;
   headline?: InputMaybe<IGenCaisyField_String_Where>;
 };
 
@@ -1062,6 +1336,8 @@ export type IGenCompSectionHeader = {
 };
 
 export type IGenCompSectionHeaderImageArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
   locale?: InputMaybe<Scalars["String"]>;
 };
 
@@ -1078,24 +1354,33 @@ export type IGenCompSectionHeader_ConnectionEdge = {
   node?: Maybe<IGenCompSectionHeader>;
 };
 
-export type IGenCompSectionHeader_CreateInput = {
-  image?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  title?: InputMaybe<Scalars["String"]>;
+export type IGenCompSectionHeader_Image_Where = {
+  findOne?: InputMaybe<IGenCompSectionHeader_Image_WhereConnection>;
+};
+
+export type IGenCompSectionHeader_Image_WhereConnection = {
+  Asset?: InputMaybe<IGenAsset_Nested_Where>;
+};
+
+export type IGenCompSectionHeader_Nested_Where = {
+  AND?: InputMaybe<Array<InputMaybe<IGenCompSectionHeader_Nested_Where>>>;
+  OR?: InputMaybe<Array<InputMaybe<IGenCompSectionHeader_Nested_Where>>>;
+  title?: InputMaybe<IGenCaisyField_String_Where>;
 };
 
 export type IGenCompSectionHeader_Sort = {
+  createdAt?: InputMaybe<IGenOrder>;
+  id?: InputMaybe<IGenOrder>;
   image?: InputMaybe<IGenOrder>;
+  publishedAt?: InputMaybe<IGenOrder>;
   title?: InputMaybe<IGenOrder>;
-};
-
-export type IGenCompSectionHeader_UpdateInput = {
-  image?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  title?: InputMaybe<Scalars["String"]>;
+  updatedAt?: InputMaybe<IGenOrder>;
 };
 
 export type IGenCompSectionHeader_Where = {
   AND?: InputMaybe<Array<InputMaybe<IGenCompSectionHeader_Where>>>;
   OR?: InputMaybe<Array<InputMaybe<IGenCompSectionHeader_Where>>>;
+  image?: InputMaybe<IGenCompSectionHeader_Image_Where>;
   title?: InputMaybe<IGenCaisyField_String_Where>;
 };
 
@@ -1111,11 +1396,22 @@ export type IGenCompTextBlock = {
 };
 
 export type IGenCompTextBlockButtonsArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
   locale?: InputMaybe<Scalars["String"]>;
 };
 
 export type IGenCompTextBlockTextArgs = {
   locale?: InputMaybe<Scalars["String"]>;
+};
+
+export type IGenCompTextBlock_Buttons_Where = {
+  findOne?: InputMaybe<IGenCompTextBlock_Buttons_WhereConnection>;
+};
+
+export type IGenCompTextBlock_Buttons_WhereConnection = {
+  CompButton?: InputMaybe<IGenCompButton_Nested_Where>;
+  CompButtonExternalLinks?: InputMaybe<IGenCompButtonExternalLinks_Nested_Where>;
 };
 
 export type IGenCompTextBlock_Connection = {
@@ -1131,26 +1427,26 @@ export type IGenCompTextBlock_ConnectionEdge = {
   node?: Maybe<IGenCompTextBlock>;
 };
 
-export type IGenCompTextBlock_CreateInput = {
-  buttons?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  text?: InputMaybe<Scalars["JSON"]>;
-  title?: InputMaybe<Scalars["String"]>;
+export type IGenCompTextBlock_Nested_Where = {
+  AND?: InputMaybe<Array<InputMaybe<IGenCompTextBlock_Nested_Where>>>;
+  OR?: InputMaybe<Array<InputMaybe<IGenCompTextBlock_Nested_Where>>>;
+  text?: InputMaybe<IGenCaisyField_Richtext_Where>;
+  title?: InputMaybe<IGenCaisyField_String_Where>;
 };
 
 export type IGenCompTextBlock_Sort = {
   buttons?: InputMaybe<IGenOrder>;
+  createdAt?: InputMaybe<IGenOrder>;
+  id?: InputMaybe<IGenOrder>;
+  publishedAt?: InputMaybe<IGenOrder>;
   title?: InputMaybe<IGenOrder>;
-};
-
-export type IGenCompTextBlock_UpdateInput = {
-  buttons?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  text?: InputMaybe<Scalars["JSON"]>;
-  title?: InputMaybe<Scalars["String"]>;
+  updatedAt?: InputMaybe<IGenOrder>;
 };
 
 export type IGenCompTextBlock_Where = {
   AND?: InputMaybe<Array<InputMaybe<IGenCompTextBlock_Where>>>;
   OR?: InputMaybe<Array<InputMaybe<IGenCompTextBlock_Where>>>;
+  buttons?: InputMaybe<IGenCompTextBlock_Buttons_Where>;
   text?: InputMaybe<IGenCaisyField_Richtext_Where>;
   title?: InputMaybe<IGenCaisyField_String_Where>;
 };
@@ -1163,6 +1459,12 @@ export type IGenCompTextBlock_Text = {
   __typename: "CompTextBlock_text";
   connections?: Maybe<Array<Maybe<IGenCompTextBlock_Text_Connections>>>;
   json?: Maybe<Scalars["JSON"]>;
+};
+
+export type IGenCompTextBlock_TextConnectionsArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
+  locale?: InputMaybe<Scalars["String"]>;
 };
 
 export type IGenCompTextBlock_Text_Connections =
@@ -1178,23 +1480,15 @@ export type IGenFooter = {
 };
 
 export type IGenFooterLegalSectionArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
   locale?: InputMaybe<Scalars["String"]>;
 };
 
 export type IGenFooterSectionsArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
   locale?: InputMaybe<Scalars["String"]>;
-};
-
-export type IGenFooter_CreateInput = {
-  legalSection?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  sections?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  title?: InputMaybe<Scalars["String"]>;
-};
-
-export type IGenFooter_UpdateInput = {
-  legalSection?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  sections?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  title?: InputMaybe<Scalars["String"]>;
 };
 
 export type IGenFooter_LegalSection =
@@ -1215,35 +1509,27 @@ export type IGenMainNavigation = {
 };
 
 export type IGenMainNavigationHomeArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
   locale?: InputMaybe<Scalars["String"]>;
 };
 
 export type IGenMainNavigationLogoArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
   locale?: InputMaybe<Scalars["String"]>;
 };
 
 export type IGenMainNavigationLogoDarkVersionArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
   locale?: InputMaybe<Scalars["String"]>;
 };
 
 export type IGenMainNavigationMainNavigationArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
   locale?: InputMaybe<Scalars["String"]>;
-};
-
-export type IGenMainNavigation_CreateInput = {
-  home?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  logo?: InputMaybe<Scalars["ID"]>;
-  logoDarkVersion?: InputMaybe<Scalars["ID"]>;
-  mainNavigation?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  title?: InputMaybe<Scalars["String"]>;
-};
-
-export type IGenMainNavigation_UpdateInput = {
-  home?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  logo?: InputMaybe<Scalars["ID"]>;
-  logoDarkVersion?: InputMaybe<Scalars["ID"]>;
-  mainNavigation?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  title?: InputMaybe<Scalars["String"]>;
 };
 
 export type IGenMainNavigation_Home = IGenPage;
@@ -1256,74 +1542,23 @@ export type IGenMutation = {
   createCompBrandCategory?: Maybe<IGenCompBrandCategory>;
   createCompButton?: Maybe<IGenCompButton>;
   createCompButtonExternalLinks?: Maybe<IGenCompButtonExternalLinks>;
-  createCompFacts?: Maybe<IGenCompFacts>;
-  createCompFactsFact?: Maybe<IGenCompFactsFact>;
-  createCompFaq?: Maybe<IGenCompFaq>;
   createCompFaqItem?: Maybe<IGenCompFaqItem>;
   createCompFooterSection?: Maybe<IGenCompFooterSection>;
-  createCompGrid?: Maybe<IGenCompGrid>;
-  createCompGridBrandCard?: Maybe<IGenCompGridBrandCard>;
-  createCompGridTeamMemberCard?: Maybe<IGenCompGridTeamMemberCard>;
-  createCompHeroSlider?: Maybe<IGenCompHeroSlider>;
-  createCompHeroSliderSlide?: Maybe<IGenCompHeroSliderSlide>;
   createCompImageCard?: Maybe<IGenCompImageCard>;
-  createCompImageWithText?: Maybe<IGenCompImageWithText>;
-  createCompPageHeader?: Maybe<IGenCompPageHeader>;
-  createCompSectionHeader?: Maybe<IGenCompSectionHeader>;
-  createCompTextBlock?: Maybe<IGenCompTextBlock>;
-  createFooter?: Maybe<IGenFooter>;
-  createMainNavigation?: Maybe<IGenMainNavigation>;
-  createPage?: Maybe<IGenPage>;
-  createUniversalText?: Maybe<IGenUniversalText>;
-  createVideo?: Maybe<IGenVideo>;
   deleteAsset?: Maybe<Scalars["Boolean"]>;
   deleteCompBrandCategory?: Maybe<Scalars["Boolean"]>;
   deleteCompButton?: Maybe<Scalars["Boolean"]>;
   deleteCompButtonExternalLinks?: Maybe<Scalars["Boolean"]>;
-  deleteCompFacts?: Maybe<Scalars["Boolean"]>;
-  deleteCompFactsFact?: Maybe<Scalars["Boolean"]>;
-  deleteCompFaq?: Maybe<Scalars["Boolean"]>;
   deleteCompFaqItem?: Maybe<Scalars["Boolean"]>;
   deleteCompFooterSection?: Maybe<Scalars["Boolean"]>;
-  deleteCompGrid?: Maybe<Scalars["Boolean"]>;
-  deleteCompGridBrandCard?: Maybe<Scalars["Boolean"]>;
-  deleteCompGridTeamMemberCard?: Maybe<Scalars["Boolean"]>;
-  deleteCompHeroSlider?: Maybe<Scalars["Boolean"]>;
-  deleteCompHeroSliderSlide?: Maybe<Scalars["Boolean"]>;
   deleteCompImageCard?: Maybe<Scalars["Boolean"]>;
-  deleteCompImageWithText?: Maybe<Scalars["Boolean"]>;
-  deleteCompPageHeader?: Maybe<Scalars["Boolean"]>;
-  deleteCompSectionHeader?: Maybe<Scalars["Boolean"]>;
-  deleteCompTextBlock?: Maybe<Scalars["Boolean"]>;
-  deleteFooter?: Maybe<Scalars["Boolean"]>;
-  deleteMainNavigation?: Maybe<Scalars["Boolean"]>;
-  deletePage?: Maybe<Scalars["Boolean"]>;
-  deleteUniversalText?: Maybe<Scalars["Boolean"]>;
-  deleteVideo?: Maybe<Scalars["Boolean"]>;
   updateAsset?: Maybe<IGenAsset>;
   updateCompBrandCategory?: Maybe<IGenCompBrandCategory>;
   updateCompButton?: Maybe<IGenCompButton>;
   updateCompButtonExternalLinks?: Maybe<IGenCompButtonExternalLinks>;
-  updateCompFacts?: Maybe<IGenCompFacts>;
-  updateCompFactsFact?: Maybe<IGenCompFactsFact>;
-  updateCompFaq?: Maybe<IGenCompFaq>;
   updateCompFaqItem?: Maybe<IGenCompFaqItem>;
   updateCompFooterSection?: Maybe<IGenCompFooterSection>;
-  updateCompGrid?: Maybe<IGenCompGrid>;
-  updateCompGridBrandCard?: Maybe<IGenCompGridBrandCard>;
-  updateCompGridTeamMemberCard?: Maybe<IGenCompGridTeamMemberCard>;
-  updateCompHeroSlider?: Maybe<IGenCompHeroSlider>;
-  updateCompHeroSliderSlide?: Maybe<IGenCompHeroSliderSlide>;
   updateCompImageCard?: Maybe<IGenCompImageCard>;
-  updateCompImageWithText?: Maybe<IGenCompImageWithText>;
-  updateCompPageHeader?: Maybe<IGenCompPageHeader>;
-  updateCompSectionHeader?: Maybe<IGenCompSectionHeader>;
-  updateCompTextBlock?: Maybe<IGenCompTextBlock>;
-  updateFooter?: Maybe<IGenFooter>;
-  updateMainNavigation?: Maybe<IGenMainNavigation>;
-  updatePage?: Maybe<IGenPage>;
-  updateUniversalText?: Maybe<IGenUniversalText>;
-  updateVideo?: Maybe<IGenVideo>;
 };
 
 export type IGenMutationCreateAssetArgs = {
@@ -1346,21 +1581,6 @@ export type IGenMutationCreateCompButtonExternalLinksArgs = {
   locale?: InputMaybe<Scalars["String"]>;
 };
 
-export type IGenMutationCreateCompFactsArgs = {
-  input: IGenCompFacts_CreateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-};
-
-export type IGenMutationCreateCompFactsFactArgs = {
-  input: IGenCompFactsFact_CreateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-};
-
-export type IGenMutationCreateCompFaqArgs = {
-  input: IGenCompFaq_CreateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-};
-
 export type IGenMutationCreateCompFaqItemArgs = {
   input: IGenCompFaqItem_CreateInput;
   locale?: InputMaybe<Scalars["String"]>;
@@ -1371,78 +1591,8 @@ export type IGenMutationCreateCompFooterSectionArgs = {
   locale?: InputMaybe<Scalars["String"]>;
 };
 
-export type IGenMutationCreateCompGridArgs = {
-  input: IGenCompGrid_CreateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-};
-
-export type IGenMutationCreateCompGridBrandCardArgs = {
-  input: IGenCompGridBrandCard_CreateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-};
-
-export type IGenMutationCreateCompGridTeamMemberCardArgs = {
-  input: IGenCompGridTeamMemberCard_CreateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-};
-
-export type IGenMutationCreateCompHeroSliderArgs = {
-  input: IGenCompHeroSlider_CreateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-};
-
-export type IGenMutationCreateCompHeroSliderSlideArgs = {
-  input: IGenCompHeroSliderSlide_CreateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-};
-
 export type IGenMutationCreateCompImageCardArgs = {
   input: IGenCompImageCard_CreateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-};
-
-export type IGenMutationCreateCompImageWithTextArgs = {
-  input: IGenCompImageWithText_CreateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-};
-
-export type IGenMutationCreateCompPageHeaderArgs = {
-  input: IGenCompPageHeader_CreateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-};
-
-export type IGenMutationCreateCompSectionHeaderArgs = {
-  input: IGenCompSectionHeader_CreateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-};
-
-export type IGenMutationCreateCompTextBlockArgs = {
-  input: IGenCompTextBlock_CreateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-};
-
-export type IGenMutationCreateFooterArgs = {
-  input: IGenFooter_CreateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-};
-
-export type IGenMutationCreateMainNavigationArgs = {
-  input: IGenMainNavigation_CreateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-};
-
-export type IGenMutationCreatePageArgs = {
-  input: IGenPage_CreateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-};
-
-export type IGenMutationCreateUniversalTextArgs = {
-  input: IGenUniversalText_CreateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-};
-
-export type IGenMutationCreateVideoArgs = {
-  input: IGenVideo_CreateInput;
   locale?: InputMaybe<Scalars["String"]>;
 };
 
@@ -1462,18 +1612,6 @@ export type IGenMutationDeleteCompButtonExternalLinksArgs = {
   id: Scalars["ID"];
 };
 
-export type IGenMutationDeleteCompFactsArgs = {
-  id: Scalars["ID"];
-};
-
-export type IGenMutationDeleteCompFactsFactArgs = {
-  id: Scalars["ID"];
-};
-
-export type IGenMutationDeleteCompFaqArgs = {
-  id: Scalars["ID"];
-};
-
 export type IGenMutationDeleteCompFaqItemArgs = {
   id: Scalars["ID"];
 };
@@ -1482,63 +1620,7 @@ export type IGenMutationDeleteCompFooterSectionArgs = {
   id: Scalars["ID"];
 };
 
-export type IGenMutationDeleteCompGridArgs = {
-  id: Scalars["ID"];
-};
-
-export type IGenMutationDeleteCompGridBrandCardArgs = {
-  id: Scalars["ID"];
-};
-
-export type IGenMutationDeleteCompGridTeamMemberCardArgs = {
-  id: Scalars["ID"];
-};
-
-export type IGenMutationDeleteCompHeroSliderArgs = {
-  id: Scalars["ID"];
-};
-
-export type IGenMutationDeleteCompHeroSliderSlideArgs = {
-  id: Scalars["ID"];
-};
-
 export type IGenMutationDeleteCompImageCardArgs = {
-  id: Scalars["ID"];
-};
-
-export type IGenMutationDeleteCompImageWithTextArgs = {
-  id: Scalars["ID"];
-};
-
-export type IGenMutationDeleteCompPageHeaderArgs = {
-  id: Scalars["ID"];
-};
-
-export type IGenMutationDeleteCompSectionHeaderArgs = {
-  id: Scalars["ID"];
-};
-
-export type IGenMutationDeleteCompTextBlockArgs = {
-  id: Scalars["ID"];
-};
-
-export type IGenMutationDeleteFooterArgs = {
-  id: Scalars["ID"];
-};
-
-export type IGenMutationDeleteMainNavigationArgs = {
-  id: Scalars["ID"];
-};
-
-export type IGenMutationDeletePageArgs = {
-  id: Scalars["ID"];
-};
-
-export type IGenMutationDeleteUniversalTextArgs = {
-  id: Scalars["ID"];
-};
-
-export type IGenMutationDeleteVideoArgs = {
   id: Scalars["ID"];
 };
 
@@ -1570,27 +1652,6 @@ export type IGenMutationUpdateCompButtonExternalLinksArgs = {
   merge?: InputMaybe<Scalars["Boolean"]>;
 };
 
-export type IGenMutationUpdateCompFactsArgs = {
-  id: Scalars["ID"];
-  input: IGenCompFacts_UpdateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-  merge?: InputMaybe<Scalars["Boolean"]>;
-};
-
-export type IGenMutationUpdateCompFactsFactArgs = {
-  id: Scalars["ID"];
-  input: IGenCompFactsFact_UpdateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-  merge?: InputMaybe<Scalars["Boolean"]>;
-};
-
-export type IGenMutationUpdateCompFaqArgs = {
-  id: Scalars["ID"];
-  input: IGenCompFaq_UpdateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-  merge?: InputMaybe<Scalars["Boolean"]>;
-};
-
 export type IGenMutationUpdateCompFaqItemArgs = {
   id: Scalars["ID"];
   input: IGenCompFaqItem_UpdateInput;
@@ -1605,107 +1666,9 @@ export type IGenMutationUpdateCompFooterSectionArgs = {
   merge?: InputMaybe<Scalars["Boolean"]>;
 };
 
-export type IGenMutationUpdateCompGridArgs = {
-  id: Scalars["ID"];
-  input: IGenCompGrid_UpdateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-  merge?: InputMaybe<Scalars["Boolean"]>;
-};
-
-export type IGenMutationUpdateCompGridBrandCardArgs = {
-  id: Scalars["ID"];
-  input: IGenCompGridBrandCard_UpdateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-  merge?: InputMaybe<Scalars["Boolean"]>;
-};
-
-export type IGenMutationUpdateCompGridTeamMemberCardArgs = {
-  id: Scalars["ID"];
-  input: IGenCompGridTeamMemberCard_UpdateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-  merge?: InputMaybe<Scalars["Boolean"]>;
-};
-
-export type IGenMutationUpdateCompHeroSliderArgs = {
-  id: Scalars["ID"];
-  input: IGenCompHeroSlider_UpdateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-  merge?: InputMaybe<Scalars["Boolean"]>;
-};
-
-export type IGenMutationUpdateCompHeroSliderSlideArgs = {
-  id: Scalars["ID"];
-  input: IGenCompHeroSliderSlide_UpdateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-  merge?: InputMaybe<Scalars["Boolean"]>;
-};
-
 export type IGenMutationUpdateCompImageCardArgs = {
   id: Scalars["ID"];
   input: IGenCompImageCard_UpdateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-  merge?: InputMaybe<Scalars["Boolean"]>;
-};
-
-export type IGenMutationUpdateCompImageWithTextArgs = {
-  id: Scalars["ID"];
-  input: IGenCompImageWithText_UpdateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-  merge?: InputMaybe<Scalars["Boolean"]>;
-};
-
-export type IGenMutationUpdateCompPageHeaderArgs = {
-  id: Scalars["ID"];
-  input: IGenCompPageHeader_UpdateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-  merge?: InputMaybe<Scalars["Boolean"]>;
-};
-
-export type IGenMutationUpdateCompSectionHeaderArgs = {
-  id: Scalars["ID"];
-  input: IGenCompSectionHeader_UpdateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-  merge?: InputMaybe<Scalars["Boolean"]>;
-};
-
-export type IGenMutationUpdateCompTextBlockArgs = {
-  id: Scalars["ID"];
-  input: IGenCompTextBlock_UpdateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-  merge?: InputMaybe<Scalars["Boolean"]>;
-};
-
-export type IGenMutationUpdateFooterArgs = {
-  id: Scalars["ID"];
-  input: IGenFooter_UpdateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-  merge?: InputMaybe<Scalars["Boolean"]>;
-};
-
-export type IGenMutationUpdateMainNavigationArgs = {
-  id: Scalars["ID"];
-  input: IGenMainNavigation_UpdateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-  merge?: InputMaybe<Scalars["Boolean"]>;
-};
-
-export type IGenMutationUpdatePageArgs = {
-  id: Scalars["ID"];
-  input: IGenPage_UpdateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-  merge?: InputMaybe<Scalars["Boolean"]>;
-};
-
-export type IGenMutationUpdateUniversalTextArgs = {
-  id: Scalars["ID"];
-  input: IGenUniversalText_UpdateInput;
-  locale?: InputMaybe<Scalars["String"]>;
-  merge?: InputMaybe<Scalars["Boolean"]>;
-};
-
-export type IGenMutationUpdateVideoArgs = {
-  id: Scalars["ID"];
-  input: IGenVideo_UpdateInput;
   locale?: InputMaybe<Scalars["String"]>;
   merge?: InputMaybe<Scalars["Boolean"]>;
 };
@@ -1731,10 +1694,14 @@ export type IGenPage = {
 };
 
 export type IGenPageComponentsArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
   locale?: InputMaybe<Scalars["String"]>;
 };
 
 export type IGenPageFeaturedImageArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
   locale?: InputMaybe<Scalars["String"]>;
 };
 
@@ -1744,6 +1711,21 @@ export type IGenPageInfo = {
   hasNextPage?: Maybe<Scalars["Boolean"]>;
   hasPreviousPage?: Maybe<Scalars["Boolean"]>;
   startCursor?: Maybe<Scalars["String"]>;
+};
+
+export type IGenPage_Components_Where = {
+  findOne?: InputMaybe<IGenPage_Components_WhereConnection>;
+};
+
+export type IGenPage_Components_WhereConnection = {
+  CompFacts?: InputMaybe<IGenCompFacts_Nested_Where>;
+  CompFaq?: InputMaybe<IGenCompFaq_Nested_Where>;
+  CompGrid?: InputMaybe<IGenCompGrid_Nested_Where>;
+  CompHeroSlider?: InputMaybe<IGenCompHeroSlider_Nested_Where>;
+  CompImageWithText?: InputMaybe<IGenCompImageWithText_Nested_Where>;
+  CompPageHeader?: InputMaybe<IGenCompPageHeader_Nested_Where>;
+  CompSectionHeader?: InputMaybe<IGenCompSectionHeader_Nested_Where>;
+  CompTextBlock?: InputMaybe<IGenCompTextBlock_Nested_Where>;
 };
 
 export type IGenPage_Connection = {
@@ -1759,16 +1741,24 @@ export type IGenPage_ConnectionEdge = {
   node?: Maybe<IGenPage>;
 };
 
-export type IGenPage_CreateInput = {
-  components?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  featuredImage?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  internalTitle?: InputMaybe<Scalars["String"]>;
-  metaAuthor?: InputMaybe<Scalars["String"]>;
-  metaDescription?: InputMaybe<Scalars["String"]>;
-  metaKeywords?: InputMaybe<Scalars["String"]>;
-  metaTitle?: InputMaybe<Scalars["String"]>;
-  sitemapPriority?: InputMaybe<IGenPage_SitemapPriority>;
-  slug?: InputMaybe<Scalars["String"]>;
+export type IGenPage_FeaturedImage_Where = {
+  findOne?: InputMaybe<IGenPage_FeaturedImage_WhereConnection>;
+};
+
+export type IGenPage_FeaturedImage_WhereConnection = {
+  Asset?: InputMaybe<IGenAsset_Nested_Where>;
+};
+
+export type IGenPage_Nested_Where = {
+  AND?: InputMaybe<Array<InputMaybe<IGenPage_Nested_Where>>>;
+  OR?: InputMaybe<Array<InputMaybe<IGenPage_Nested_Where>>>;
+  internalTitle?: InputMaybe<IGenCaisyField_String_Where>;
+  metaAuthor?: InputMaybe<IGenCaisyField_String_Where>;
+  metaDescription?: InputMaybe<IGenCaisyField_String_Where>;
+  metaKeywords?: InputMaybe<IGenCaisyField_String_Where>;
+  metaTitle?: InputMaybe<IGenCaisyField_String_Where>;
+  sitemapPriority?: InputMaybe<IGenPage_SitemapPriority_Where>;
+  slug?: InputMaybe<IGenCaisyField_String_Where>;
 };
 
 export enum IGenPage_SitemapPriority {
@@ -1784,31 +1774,25 @@ export type IGenPage_SitemapPriority_Where = {
 
 export type IGenPage_Sort = {
   components?: InputMaybe<IGenOrder>;
+  createdAt?: InputMaybe<IGenOrder>;
   featuredImage?: InputMaybe<IGenOrder>;
+  id?: InputMaybe<IGenOrder>;
   internalTitle?: InputMaybe<IGenOrder>;
   metaAuthor?: InputMaybe<IGenOrder>;
   metaDescription?: InputMaybe<IGenOrder>;
   metaKeywords?: InputMaybe<IGenOrder>;
   metaTitle?: InputMaybe<IGenOrder>;
+  publishedAt?: InputMaybe<IGenOrder>;
   sitemapPriority?: InputMaybe<IGenOrder>;
   slug?: InputMaybe<IGenOrder>;
-};
-
-export type IGenPage_UpdateInput = {
-  components?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  featuredImage?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  internalTitle?: InputMaybe<Scalars["String"]>;
-  metaAuthor?: InputMaybe<Scalars["String"]>;
-  metaDescription?: InputMaybe<Scalars["String"]>;
-  metaKeywords?: InputMaybe<Scalars["String"]>;
-  metaTitle?: InputMaybe<Scalars["String"]>;
-  sitemapPriority?: InputMaybe<IGenPage_SitemapPriority>;
-  slug?: InputMaybe<Scalars["String"]>;
+  updatedAt?: InputMaybe<IGenOrder>;
 };
 
 export type IGenPage_Where = {
   AND?: InputMaybe<Array<InputMaybe<IGenPage_Where>>>;
   OR?: InputMaybe<Array<InputMaybe<IGenPage_Where>>>;
+  components?: InputMaybe<IGenPage_Components_Where>;
+  featuredImage?: InputMaybe<IGenPage_FeaturedImage_Where>;
   internalTitle?: InputMaybe<IGenCaisyField_String_Where>;
   metaAuthor?: InputMaybe<IGenCaisyField_String_Where>;
   metaDescription?: InputMaybe<IGenCaisyField_String_Where>;
@@ -1854,6 +1838,7 @@ export type IGenQuery = {
   Footer?: Maybe<IGenFooter>;
   MainNavigation?: Maybe<IGenMainNavigation>;
   Page?: Maybe<IGenPage>;
+  Tag?: Maybe<IGenCaisy_Field_Tag>;
   UniversalText?: Maybe<IGenUniversalText>;
   Video?: Maybe<IGenVideo>;
   allAsset?: Maybe<IGenAsset_Connection>;
@@ -1876,6 +1861,7 @@ export type IGenQuery = {
   allCompSectionHeader?: Maybe<IGenCompSectionHeader_Connection>;
   allCompTextBlock?: Maybe<IGenCompTextBlock_Connection>;
   allPage?: Maybe<IGenPage_Connection>;
+  allTags?: Maybe<IGenTag_Connection>;
   allVideo?: Maybe<IGenVideo_Connection>;
 };
 
@@ -1985,6 +1971,10 @@ export type IGenQueryMainNavigationArgs = {
 export type IGenQueryPageArgs = {
   id: Scalars["ID"];
   locale?: InputMaybe<Scalars["String"]>;
+};
+
+export type IGenQueryTagArgs = {
+  id: Scalars["ID"];
 };
 
 export type IGenQueryUniversalTextArgs = {
@@ -2196,6 +2186,13 @@ export type IGenQueryAllPageArgs = {
   where?: InputMaybe<Array<InputMaybe<IGenPage_Where>>>;
 };
 
+export type IGenQueryAllTagsArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  before?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
+  last?: InputMaybe<Scalars["Int"]>;
+};
+
 export type IGenQueryAllVideoArgs = {
   after?: InputMaybe<Scalars["String"]>;
   before?: InputMaybe<Scalars["String"]>;
@@ -2204,6 +2201,19 @@ export type IGenQueryAllVideoArgs = {
   locale?: InputMaybe<Scalars["String"]>;
   sort?: InputMaybe<Array<InputMaybe<IGenVideo_Sort>>>;
   where?: InputMaybe<Array<InputMaybe<IGenVideo_Where>>>;
+};
+
+export type IGenTag_Connection = {
+  __typename: "Tag_Connection";
+  edges?: Maybe<Array<Maybe<IGenTag_ConnectionEdge>>>;
+  pageInfo?: Maybe<IGenPageInfo>;
+  totalCount?: Maybe<Scalars["Int"]>;
+};
+
+export type IGenTag_ConnectionEdge = {
+  __typename: "Tag_ConnectionEdge";
+  cursor?: Maybe<Scalars["String"]>;
+  node?: Maybe<IGenCaisy_Field_Tag>;
 };
 
 export type IGenUniversalText = {
@@ -2227,45 +2237,19 @@ export type IGenUniversalText = {
 };
 
 export type IGenUniversalTextPageNotFoundBackgroundImageArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
   locale?: InputMaybe<Scalars["String"]>;
 };
 
 export type IGenUniversalTextPageNotFoundButtonArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
   locale?: InputMaybe<Scalars["String"]>;
 };
 
 export type IGenUniversalTextPageNotFoundDescriptionArgs = {
   locale?: InputMaybe<Scalars["String"]>;
-};
-
-export type IGenUniversalText_CreateInput = {
-  copyright?: InputMaybe<Scalars["String"]>;
-  customHtml?: InputMaybe<Scalars["String"]>;
-  customHtmlBody?: InputMaybe<Scalars["String"]>;
-  filter_all?: InputMaybe<Scalars["String"]>;
-  filter_current?: InputMaybe<Scalars["String"]>;
-  filter_divested?: InputMaybe<Scalars["String"]>;
-  pageNotFoundBackgroundImage?: InputMaybe<Scalars["ID"]>;
-  pageNotFoundButton?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  pageNotFoundDescription?: InputMaybe<Scalars["JSON"]>;
-  primaryColor?: InputMaybe<Scalars["String"]>;
-  secondaryColor?: InputMaybe<Scalars["String"]>;
-  title?: InputMaybe<Scalars["String"]>;
-};
-
-export type IGenUniversalText_UpdateInput = {
-  copyright?: InputMaybe<Scalars["String"]>;
-  customHtml?: InputMaybe<Scalars["String"]>;
-  customHtmlBody?: InputMaybe<Scalars["String"]>;
-  filter_all?: InputMaybe<Scalars["String"]>;
-  filter_current?: InputMaybe<Scalars["String"]>;
-  filter_divested?: InputMaybe<Scalars["String"]>;
-  pageNotFoundBackgroundImage?: InputMaybe<Scalars["ID"]>;
-  pageNotFoundButton?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  pageNotFoundDescription?: InputMaybe<Scalars["JSON"]>;
-  primaryColor?: InputMaybe<Scalars["String"]>;
-  secondaryColor?: InputMaybe<Scalars["String"]>;
-  title?: InputMaybe<Scalars["String"]>;
 };
 
 export type IGenUniversalText_PageNotFoundButton =
@@ -2280,6 +2264,12 @@ export type IGenUniversalText_PageNotFoundDescription = {
   json?: Maybe<Scalars["JSON"]>;
 };
 
+export type IGenUniversalText_PageNotFoundDescriptionConnectionsArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
+  locale?: InputMaybe<Scalars["String"]>;
+};
+
 export type IGenUniversalText_PageNotFoundDescription_Connections =
   IGenCaisy_Field_Document_NotFound;
 
@@ -2287,7 +2277,6 @@ export type IGenVideo = {
   __typename: "Video";
   _meta?: Maybe<IGenCaisyDocument_Meta>;
   id?: Maybe<Scalars["ID"]>;
-  title?: Maybe<Scalars["String"]>;
   vimeoVideoId?: Maybe<Scalars["String"]>;
 };
 
@@ -2304,24 +2293,22 @@ export type IGenVideo_ConnectionEdge = {
   node?: Maybe<IGenVideo>;
 };
 
-export type IGenVideo_CreateInput = {
-  title?: InputMaybe<Scalars["String"]>;
-  vimeoVideoId?: InputMaybe<Scalars["String"]>;
+export type IGenVideo_Nested_Where = {
+  AND?: InputMaybe<Array<InputMaybe<IGenVideo_Nested_Where>>>;
+  OR?: InputMaybe<Array<InputMaybe<IGenVideo_Nested_Where>>>;
+  vimeoVideoId?: InputMaybe<IGenCaisyField_String_Where>;
 };
 
 export type IGenVideo_Sort = {
-  title?: InputMaybe<IGenOrder>;
+  createdAt?: InputMaybe<IGenOrder>;
+  id?: InputMaybe<IGenOrder>;
+  publishedAt?: InputMaybe<IGenOrder>;
+  updatedAt?: InputMaybe<IGenOrder>;
   vimeoVideoId?: InputMaybe<IGenOrder>;
-};
-
-export type IGenVideo_UpdateInput = {
-  title?: InputMaybe<Scalars["String"]>;
-  vimeoVideoId?: InputMaybe<Scalars["String"]>;
 };
 
 export type IGenVideo_Where = {
   AND?: InputMaybe<Array<InputMaybe<IGenVideo_Where>>>;
   OR?: InputMaybe<Array<InputMaybe<IGenVideo_Where>>>;
-  title?: InputMaybe<IGenCaisyField_String_Where>;
   vimeoVideoId?: InputMaybe<IGenCaisyField_String_Where>;
 };
