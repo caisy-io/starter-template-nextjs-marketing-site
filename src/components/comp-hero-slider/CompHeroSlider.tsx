@@ -19,7 +19,7 @@ export const CompHeroSlider: React.FC<IGenCompHeroSlider> = ({ slides }) => {
   >(undefined);
 
   const intervalRef = useRef<any>();
-  const refActiveSlide = useRef<number>();
+  const refActiveSlide = useRef<number>(0);
   const timePerSlide = 5000;
 
   useEffect(() => {
